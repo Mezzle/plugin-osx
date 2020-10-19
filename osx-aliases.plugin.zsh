@@ -35,7 +35,7 @@ if [[ "$OSTYPE" =~ ^(darwin)+ ]]; then
       info "OS X Packages" && sudo softwareupdate -i -a || error "Updating OS X packages"
     fi
     
-    installed "brew" && (brew update; brew upgrade --all; brew cleanup; brew cask cleanup;) && success "Updated brew" || error "Updating brew"
+    installed "brew" && (brew update; brew upgrade; brew upgrade --cask; brew cleanup) && success "Updated brew" || error "Updating brew"
     installed "npm" && (npm install npm -g; npm update -g;) && success "Updated npm" || error "Updating npm"
     installed "gem" && (sudo gem update --system; sudo gem update) && success "Updated gem" || error "Updating gem"
     # upgrade outdated pip packages...
